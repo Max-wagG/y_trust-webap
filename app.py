@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 # --- CONFIGURATION ---
-API_BASE = "https://y-trust-003-51424904642.europe-west1.run.app/docs"  # TODO: Replace with your actual deployed API URL
+API_BASE = "https://y-trust-003-51424904642.europe-west1.run.app"  # TODO: Replace with your actual deployed API URL
 
 # --- PAGE SETTINGS ---
 st.set_page_config(
