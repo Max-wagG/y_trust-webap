@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 # --- CONFIGURATION ---
-API_BASE = "https://y-trust-003-51424904642.europe-west1.run.app"  # TODO: Replace with your actual deployed API URL
+API_BASE = "https://y-trust-003-51424904642.europe-west1.run.app"  
 
 # --- PAGE SETTINGS ---
 st.set_page_config(
@@ -81,11 +81,11 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- MAIN HEADER ---
-st.markdown('<div class="main-header">🌿 Y-TRUST Recipe Ingredient Analyzer</div>', unsafe_allow_html=True)
-
+st.markdown('<div class="main-header">🌿 Y-TRUST</div>', unsafe_allow_html=True)
+st.markdo
 # --- FETCH RECIPE NAMES FOR DROPDOWN ---
 try:
-    recipe_names_response = requests.get(f"{API_BASE}/data/recipes")
+    recipe_names_response = requests.get(f"{API_BASE}/ingredients/predict")
     if recipe_names_response.status_code == 200:
         all_recipe_names = recipe_names_response.json().get("recipes", [])
     else:

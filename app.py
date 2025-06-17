@@ -17,28 +17,70 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- CSS STYLING ---
 st.markdown("""
 <style>
     .main-header {
-        font-size: 3rem;
+        font-size: 2.5rem;
         font-weight: bold;
-        color: #3a7d44;
-        text-align: center;
-        margin-bottom: 2rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    }
-    .metric-card {
-        background: linear-gradient(135deg, #d0f0c0 0%, #9ccc65 100%);
-        padding: 1rem;
-        border-radius: 10px;
         color: #2e7d32;
         text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    .metric-card {
+        background: linear-gradient(135deg, #a8e6cf, #dcedc1);
+        padding: 1rem;
+        border-radius: 10px;
+        color: #1b5e20;
+        text-align: center;
         margin: 0.5rem 0;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    .info-box {
+        background: #e0f2f1;
+        border-left: 5px solid #4caf50;
+        padding: 1rem;
+        border-radius: 5px;
+        color: #004d40;
+        margin-bottom: 1.5rem;
+    }
+    .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: #f1f8e9;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .logo {
+        height: 40px;
     }
 </style>
 """, unsafe_allow_html=True)
+
+
+# # --- CSS STYLING ---
+# st.markdown("""
+# # <style>
+# #     .main-header {
+# #         font-size: 3rem;
+# #         font-weight: bold;
+# #         color: #3a7d44;
+# #         text-align: center;
+# #         margin-bottom: 2rem;
+# #         text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+# #     }
+# #     .metric-card {
+# #         background: linear-gradient(135deg, #d0f0c0 0%, #9ccc65 100%);
+# #         padding: 1rem;
+# #         border-radius: 10px;
+# #         color: #2e7d32;
+# #         text-align: center;
+# #         margin: 0.5rem 0;
+# #         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+# #     }
+# # </style>
+# """, unsafe_allow_html=True)
 
 # --- HEADER ---
 st.markdown('<div class="main-header">🍳 Recipe Ingredient Analyzer</div>', unsafe_allow_html=True)
@@ -80,24 +122,24 @@ if recipe_name:
                     # --- VISUALIZATIONS ---
                     st.subheader("📊 Nutritional Visuals")
 
-                    # Radar Chart
-                    avg_vals = {
-                        'Calories': matches['energy-kcal_100g'].mean(),
-                        'Carbs': matches['carbohydrates_100g'].mean(),
-                        'Protein': matches['proteins_100g'].mean(),
-                        'Fat': matches['fat_100g'].mean()
-                    }
+                    # # Radar Chart
+                    # avg_vals = {
+                    #     'Calories': matches['energy-kcal_100g'].mean(),
+                    #     'Carbs': matches['carbohydrates_100g'].mean(),
+                    #     'Protein': matches['proteins_100g'].mean(),
+                    #     'Fat': matches['fat_100g'].mean()
+                    # }
 
-                    radar_fig = go.Figure()
-                    radar_fig.add_trace(go.Scatterpolar(
-                        r=list(avg_vals.values()),
-                        theta=list(avg_vals.keys()),
-                        fill='toself',
-                        name='Average Nutrition',
-                        line_color='#66bb6a'
-                    ))
-                    radar_fig.update_layout(polar=dict(radialaxis=dict(visible=True)), showlegend=False)
-                    st.plotly_chart(radar_fig, use_container_width=True)
+                    # radar_fig = go.Figure()
+                    # radar_fig.add_trace(go.Scatterpolar(
+                    #     r=list(avg_vals.values()),
+                    #     theta=list(avg_vals.keys()),
+                    #     fill='toself',
+                    #     name='Average Nutrition',
+                    #     line_color='#66bb6a'
+                    # ))
+                    # radar_fig.update_layout(polar=dict(radialaxis=dict(visible=True)), showlegend=False)
+                    # st.plotly_chart(radar_fig, use_container_width=True)
 
                     # Histogram
                     hist_fig = px.histogram(matches, x="match_score", nbins=20, title="Match Score Distribution")

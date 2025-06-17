@@ -8,3 +8,4 @@ scikit-learn
 streamlit
 plotly
 requests
+sentence-transformers
